@@ -1,35 +1,51 @@
 # frozen_string_literal: true
 
 require 'day1'
-require 'utils'
 
 describe Day1 do
   let(:day1) { described_class.new }
 
-  let(:example_input) do
-    [199, 200, 208, 210, 200, 207, 240, 269, 260, 263]
-  end
-
-  let(:file_input) { Utils.read_numbers_from(file: 'input/day1.txt') }
+  let(:file_input) { File.readlines('input/day1.txt') }
 
   describe '#part1' do
     context 'with example input' do
-      it { expect(day1.part1(depths: example_input)).to eq(7) }
+      let(:example_input) do
+        %w[
+          1abc2
+          pqr3stu8vwx
+          a1b2c3d4e5f
+          treb7uchet
+        ]
+      end
+
+      it { expect(day1.part1(calibration_input: example_input)).to eq(142) }
     end
 
     context 'with puzzle input file' do
-      it { expect(day1.part1(depths: file_input)).to eq(1162) }
+      it { expect(day1.part1(calibration_input: file_input)).to eq(54081) }
     end
 
   end
 
   describe '#part2' do
     context 'with example input' do
-      it { expect(day1.part2(depths: example_input)).to eq(5) }
+      let(:example_input) do
+        %w[
+          two1nine
+          eightwothree
+          abcone2threexyz
+          xtwone3four
+          4nineeightseven2
+          zoneight234
+          7pqrstsixteen
+        ]
+      end
+
+      it { expect(day1.part2(calibration_input: example_input)).to eq(281) }
     end
 
     context 'with puzzle input file' do
-      it { expect(day1.part2(depths: file_input)).to eq(1190) }
+      it { expect(day1.part2(calibration_input: file_input)).to eq(54649) }
     end
   end
 end
